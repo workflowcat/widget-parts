@@ -1,4 +1,4 @@
-/* widget-parts 1.1 - JSON in, chat widget part out. Host CSS variables, Tabler outline icons. */
+/* widget-parts 1.1.0 - JSON in, chat widget part out. Host CSS variables, Tabler outline icons. */
 (() => {
   const STY = `
 .wp{display:flex;flex-direction:column;gap:14px;font-size:14px;color:var(--text-primary)}
