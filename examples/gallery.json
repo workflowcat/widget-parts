@@ -1,0 +1,417 @@
+[
+ {
+  "p": "answer",
+  "icon": "circle-check",
+  "tone": "ok",
+  "text": "Yes - the login fix is live and the 3 failing tests now pass.",
+  "more": "The fix was a wrong unit in `discount()`: it expected 0.15 and got 15."
+ },
+ {
+  "p": "note",
+  "title": "Why the widgets felt hard to read",
+  "icon": "bulb",
+  "text": "Each hand-made widget had its own layout, so every reply had to be learned again.\n\nFixed parts fix that: the same shape always means the same thing.",
+  "points": [
+   [
+    "check",
+    "ok",
+    "Same part, same meaning"
+   ],
+   [
+    "coin",
+    "pro",
+    "3-10x fewer tokens"
+   ],
+   [
+    "alert-triangle",
+    "warn",
+    "Drafts and code stay as text"
+   ]
+  ],
+  "act": [
+   [
+    "Show the parts",
+    "Show all widget parts",
+    "layout-grid"
+   ]
+  ]
+ },
+ {
+  "p": "facts",
+  "title": "Release status",
+  "icon": "server",
+  "rows": [
+   [
+    "git-commit",
+    "Version",
+    "`1.1.0`"
+   ],
+   [
+    "world",
+    "CDN",
+    "jsDelivr",
+    "ok"
+   ],
+   [
+    "clock",
+    "Cache",
+    "up to 7 days for a branch, none for a tag"
+   ],
+   [
+    "alert-triangle",
+    "Open",
+    "1 question",
+    "warn"
+   ]
+  ]
+ },
+ {
+  "p": "diff",
+  "title": "Discount rule",
+  "icon": "arrows-diff",
+  "rows": [
+   "if (cart.total > 0) {",
+   [
+    "  apply(0.10)",
+    "  apply(rate(cart))"
+   ],
+   [
+    null,
+    "  log(cart.id)"
+   ],
+   "}"
+  ],
+  "act": [
+   [
+    "Keep new rule",
+    "Keep the new discount rule",
+    "check"
+   ],
+   [
+    "Revert",
+    "Revert the discount rule",
+    "arrow-back-up"
+   ]
+  ]
+ },
+ {
+  "p": "gate",
+  "title": "Release sessions to D1",
+  "icon": "rocket",
+  "checks": [
+   [
+    "coin",
+    "Posts money or stock",
+    0
+   ],
+   [
+    "message",
+    "Messages a client",
+    0
+   ],
+   [
+    "lock",
+    "Changes sign-in",
+    -1
+   ],
+   [
+    "database",
+    "Exposes personal data",
+    0
+   ],
+   [
+    "arrow-back-up",
+    "Redeploy undoes it",
+    1
+   ]
+  ],
+  "verdict": "Staging first",
+  "act": [
+   [
+    "Ship to staging",
+    "Ship to staging",
+    "flask"
+   ],
+   [
+    "Release",
+    "Release to production",
+    "rocket",
+    1
+   ]
+  ]
+ },
+ {
+  "p": "duel",
+  "title": "Login for outsiders",
+  "icon": "login",
+  "a": {
+   "name": "Access",
+   "icon": "cloud"
+  },
+  "b": {
+   "name": "Own login",
+   "icon": "key"
+  },
+  "axes": [
+   [
+    "Speed",
+    5,
+    2
+   ],
+   [
+    "Cost",
+    4,
+    4
+   ],
+   [
+    "Control",
+    2,
+    5
+   ],
+   [
+    "Upkeep",
+    4,
+    2
+   ]
+  ],
+  "act": [
+   [
+    "Pick Access",
+    "Pick Access",
+    "cloud"
+   ],
+   [
+    "Pick Own login",
+    "Pick Own login",
+    "key"
+   ]
+  ],
+  "text": "**Access** is live in a day and costs nothing extra. **Own login** takes a week, but we own the sign-in screen and the data."
+ },
+ {
+  "p": "route",
+  "title": "Ways to the client demo",
+  "icon": "route",
+  "unit": "days",
+  "paths": [
+   {
+    "name": "Access",
+    "steps": [
+     "build",
+     "wait"
+    ],
+    "band": [
+     1,
+     3
+    ]
+   },
+   {
+    "name": "Own login",
+    "steps": [
+     "build",
+     "build",
+     "test",
+     "wait"
+    ],
+    "band": [
+     4,
+     9
+    ]
+   },
+   {
+    "name": "WorkOS",
+    "steps": [
+     "paid",
+     "build",
+     "lock",
+     "wait"
+    ],
+    "band": [
+     3,
+     6
+    ]
+   }
+  ]
+ },
+ {
+  "p": "tree",
+  "title": "What unlocks what",
+  "icon": "binary-tree",
+  "nodes": [
+   {
+    "id": "db",
+    "name": "D1 schema",
+    "s": "done"
+   },
+   {
+    "id": "api",
+    "name": "Records API",
+    "s": "done",
+    "need": [
+     "db"
+    ]
+   },
+   {
+    "id": "imp",
+    "name": "Excel import",
+    "s": "open",
+    "icon": "file-spreadsheet",
+    "need": [
+     "db"
+    ]
+   },
+   {
+    "id": "ui",
+    "name": "List screen",
+    "s": "open",
+    "icon": "layout-list",
+    "need": [
+     "api"
+    ]
+   },
+   {
+    "id": "exp",
+    "name": "Export",
+    "need": [
+     "ui"
+    ]
+   },
+   {
+    "id": "rep",
+    "name": "Reports",
+    "need": [
+     "ui",
+     "imp"
+    ]
+   }
+  ]
+ },
+ {
+  "p": "blast",
+  "title": "What the rename touches",
+  "icon": "bomb",
+  "center": {
+   "name": "Rename users",
+   "icon": "database"
+  },
+  "hits": [
+   {
+    "name": "Login",
+    "icon": "lock",
+    "ring": 1
+   },
+   {
+    "name": "Sessions",
+    "icon": "clock",
+    "ring": 1
+   },
+   {
+    "name": "Invoices",
+    "icon": "receipt",
+    "ring": 2
+   },
+   {
+    "name": "Reports",
+    "icon": "chart-bar",
+    "ring": 2
+   },
+   {
+    "name": "Exports",
+    "icon": "download",
+    "ring": 2
+   },
+   {
+    "name": "Old links",
+    "icon": "link",
+    "ring": 3
+   },
+   {
+    "name": "Backups",
+    "icon": "archive",
+    "ring": 3
+   }
+  ]
+ },
+ {
+  "p": "plan",
+  "title": "Release plan",
+  "icon": "list-check",
+  "steps": [
+   [
+    "Write migration",
+    "done"
+   ],
+   [
+    "Run on staging",
+    "done"
+   ],
+   [
+    "Check with the client",
+    "wait",
+    "user:Client"
+   ],
+   [
+    "Release",
+    "next"
+   ],
+   [
+    "Watch errors 24 h",
+    "next",
+    "robot:Claude"
+   ]
+  ]
+ },
+ {
+  "p": "changed",
+  "title": "What changed",
+  "icon": "sparkles",
+  "items": [
+   {
+    "area": "Orders",
+    "areaIcon": "package",
+    "icon": "search",
+    "before": "Search by number only",
+    "now": "Search by client or number"
+   },
+   {
+    "area": "Orders",
+    "icon": "download",
+    "before": "No export",
+    "now": "Excel export"
+   },
+   {
+    "area": "Login",
+    "areaIcon": "lock",
+    "icon": "mail",
+    "before": "Password",
+    "now": "Email link"
+   }
+  ]
+ },
+ {
+  "p": "band",
+  "title": "How long",
+  "icon": "clock",
+  "unit": "days",
+  "items": [
+   [
+    "Access",
+    1,
+    3,
+    2
+   ],
+   [
+    "Own login",
+    4,
+    9,
+    6
+   ],
+   [
+    "WorkOS",
+    3,
+    6,
+    4
+   ]
+  ]
+ }
+]
