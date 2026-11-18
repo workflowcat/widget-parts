@@ -7,6 +7,28 @@
   "more": "The fix was a wrong unit in `discount()`: it expected 0.15 and got 15."
  },
  {
+  "p": "next",
+  "do": [
+   "Ship to staging",
+   "Ship the release to staging",
+   "flask",
+   "Takes about 10 minutes. Nobody outside the team sees it."
+  ],
+  "or": [
+   [
+    "Review the diff first",
+    "Show me the release diff",
+    "eye"
+   ],
+   [
+    "Wait",
+    "Hold the release until tomorrow",
+    "clock"
+   ]
+  ],
+  "then": "After staging, I check the error log for 1 hour and come back with a go or no-go."
+ },
+ {
   "p": "note",
   "title": "Why the widgets felt hard to read",
   "icon": "bulb",
@@ -37,6 +59,125 @@
   ]
  },
  {
+  "p": "picker",
+  "title": "Choose where the forms live",
+  "icon": "forms",
+  "options": [
+   {
+    "name": "Inside the app",
+    "icon": "app-window",
+    "text": "One login. Forms see the client's records.",
+    "facts": [
+     [
+      "clock",
+      "2-3 days"
+     ],
+     [
+      "coin",
+      "No new cost",
+      "ok"
+     ]
+    ],
+    "rec": true
+   },
+   {
+    "name": "Separate page",
+    "icon": "link",
+    "text": "A plain link anyone can open. No login.",
+    "facts": [
+     [
+      "clock",
+      "1 day"
+     ],
+     [
+      "lock",
+      "Open to anyone",
+      "warn"
+     ]
+    ]
+   },
+   {
+    "name": "Typeform",
+    "icon": "external-link",
+    "text": "Ready today. Answers live outside our database.",
+    "facts": [
+     [
+      "clock",
+      "Today"
+     ],
+     [
+      "coin",
+      "Paid plan",
+      "pro"
+     ]
+    ]
+   }
+  ]
+ },
+ {
+  "p": "checklist",
+  "title": "Before the client demo",
+  "icon": "list-check",
+  "items": [
+   [
+    "Seed demo data",
+    true
+   ],
+   [
+    "Check the sign-in link",
+    false,
+    "Open it in a private window."
+   ],
+   [
+    "Hide the admin menu",
+    false
+   ],
+   [
+    "Prepare 3 sample questions",
+    false
+   ]
+  ],
+  "send": [
+   "Send status",
+   "Demo checklist done",
+   "send"
+  ]
+ },
+ {
+  "p": "timeline",
+  "title": "Release so far",
+  "icon": "timeline",
+  "items": [
+   [
+    "16 Nov",
+    "Migration written",
+    "done"
+   ],
+   [
+    "17 Nov",
+    "Ran on staging",
+    "done",
+    "No errors in 24 hours."
+   ],
+   [
+    "Today",
+    "Client checks the export",
+    "now"
+   ],
+   [
+    "20 Nov",
+    "Release to production",
+    "next"
+   ],
+   [
+    "21 Nov",
+    "Old tables removed",
+    "risk",
+    "Can't be undone. Needs a backup first."
+   ]
+  ]
+ },
+ {
   "p": "facts",
   "title": "Release status",
   "icon": "server",
@@ -44,7 +185,7 @@
    [
     "git-commit",
     "Version",
-    "`1.1.0`"
+    "`1.2.0`"
    ],
    [
     "world",
@@ -138,7 +279,22 @@
     "rocket",
     1
    ]
-  ]
+  ],
+  "why": {
+   "text": "Sign-in changes stay for every user until the next release. A wrong change locks people out, and a redeploy does not bring their sessions back.",
+   "points": [
+    [
+     "flask",
+     "info",
+     "Staging first: 1 day, nobody locked out"
+    ],
+    [
+     "user-check",
+     "sub",
+     "A second reviewer checks the sign-in diff"
+    ]
+   ]
+  }
  },
  {
   "p": "duel",
@@ -186,7 +342,8 @@
     "key"
    ]
   ],
-  "text": "**Access** is live in a day and costs nothing extra. **Own login** takes a week, but we own the sign-in screen and the data."
+  "text": "**Access** is live in a day and costs nothing extra. **Own login** takes a week, but we own the sign-in screen and the data.",
+  "why": "Speed and upkeep decide this one. Control matters only if clients ask for their own sign-in screen. None have asked so far."
  },
  {
   "p": "route",

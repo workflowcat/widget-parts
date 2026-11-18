@@ -1,34 +1,34 @@
-/* widget-parts 1.1.0 - JSON in, chat widget part out. Host CSS variables, Tabler outline icons. */
+/* widget-parts 1.2.0 - JSON in, chat widget part out. Host CSS variables, Tabler outline icons. */
 (() => {
   const STY = `
-.wp{display:flex;flex-direction:column;gap:14px;font-size:14px;color:var(--text-primary)}
+.wp{display:flex;flex-direction:column;gap:20px;font-size:14px;color:var(--text-primary)}
 .wp *{box-sizing:border-box}
-.wp-c{background:var(--surface-2);border:.5px solid var(--border);border-radius:12px;padding:14px 16px}
+.wp-c{background:var(--surface-2);border:.5px solid var(--border);border-radius:12px;padding:20px 22px}
 .wp i.ti{font-size:18px;line-height:1}
 .wp-ans{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.5}
 .wp-ans>i.ti{font-size:22px;margin-top:1px}
 .wp-row{display:flex;gap:8px;align-items:center}
-.wp-act{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.wp-act{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .wp-act button{display:inline-flex;gap:6px;align-items:center;position:relative;overflow:hidden}
 .wp-act button .f{position:absolute;inset:0;width:0;background:var(--bg-danger)}
 .wp-act button span{position:relative}
-.wp-h{display:flex;gap:8px;align-items:center;font-weight:500;font-size:15px;margin-bottom:10px}
+.wp-h{display:flex;gap:10px;align-items:center;font-weight:500;font-size:16px;margin-bottom:14px}
 .wp-diff{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;font-family:var(--font-mono);font-size:12px}
 .wp-diff div{background:var(--surface-2);padding:5px 10px;white-space:pre-wrap;word-break:break-word;min-height:24px}
 .wp-diff .s{color:var(--text-secondary)}
 .wp-diff .r{background:var(--bg-danger);color:var(--text-danger)}
 .wp-diff .a{background:var(--bg-success);color:var(--text-success)}
 .wp-diff .e{background:var(--surface-1)}
-.wp-chk{display:flex;gap:10px;align-items:center;padding:7px 0;border-bottom:.5px solid var(--border)}
+.wp-chk{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:.5px solid var(--border)}
 .wp-chk:last-of-type{border-bottom:0}
 .wp-stamp{display:inline-flex;gap:6px;align-items:center;border:1.5px solid currentColor;border-radius:var(--radius);padding:4px 12px;font-weight:500;margin-left:auto}
-.wp-ax{display:grid;grid-template-columns:minmax(0,1fr) 110px minmax(0,1fr);gap:10px;align-items:center;margin:6px 0}
+.wp-ax{display:grid;grid-template-columns:minmax(0,1fr) 110px minmax(0,1fr);gap:12px;align-items:center;margin:10px 0}
 .wp-ax .l{display:flex;justify-content:flex-end}
 .wp-ax .m{text-align:center;font-size:12px;color:var(--text-secondary)}
 .wp-bar{height:10px;border-radius:5px;background:var(--border-strong)}
 .wp-bar.w{background:var(--fill-accent)}
 .wp-side{display:flex;gap:8px;align-items:center;font-weight:500}
-.wp-path{display:flex;align-items:center;gap:0;padding:8px 6px;border-radius:var(--radius);cursor:pointer}
+.wp-path{display:flex;align-items:center;gap:0;padding:10px 6px;border-radius:var(--radius);cursor:pointer}
 .wp-path:hover{background:var(--surface-1)}
 .wp-path .n{width:34px;height:34px;border-radius:50%;border:.5px solid var(--border-strong);display:flex;align-items:center;justify-content:center;background:var(--surface-2);flex:none}
 .wp-path .ln{flex:1;height:1.5px;background:var(--border-strong);min-width:10px}
@@ -43,36 +43,73 @@
 .wp-tree .nd.locked{border-style:dashed;color:var(--text-muted)}
 .wp-tree svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 .wp-plan{display:flex;flex-direction:column}
-.wp-st{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;position:relative}
-.wp-st:not(:last-child)::after{content:"";position:absolute;left:13px;top:30px;bottom:-8px;width:1.5px;background:var(--border)}
+.wp-st{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;position:relative}
+.wp-st:not(:last-child)::after{content:"";position:absolute;left:13px;top:36px;bottom:-12px;width:1.5px;background:var(--border)}
 .wp-st .d{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:.5px solid var(--border-strong);background:var(--surface-2)}
 .wp-st.done{color:var(--text-secondary)}
 .wp-st.now .d{border:1.5px solid var(--border-accent);color:var(--text-accent)}
 .wp-st.now{font-weight:500}
 .wp-st .who{font-size:12px;color:var(--text-secondary);display:flex;gap:4px;align-items:center}
-.wp-grp{display:flex;gap:6px;align-items:center;color:var(--text-secondary);font-size:13px;margin:4px 0 6px}
-.wp-chg{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);gap:8px;align-items:stretch;margin-bottom:8px}
-.wp-chg>div{border-radius:var(--radius);padding:8px 12px;display:flex;gap:8px;align-items:center}
+.wp-grp{display:flex;gap:6px;align-items:center;color:var(--text-secondary);font-size:13px;margin:8px 0 8px}
+.wp-chg{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);gap:10px;align-items:stretch;margin-bottom:10px}
+.wp-chg>div{border-radius:var(--radius);padding:10px 14px;display:flex;gap:8px;align-items:center}
 .wp-chg .b{border:.5px dashed var(--border-strong);color:var(--text-secondary)}
 .wp-chg .n{border:1.5px solid var(--border-success);background:var(--surface-2)}
 .wp-chg>i{align-self:center;color:var(--text-muted)}
-.wp-band{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;align-items:center;margin:6px 0}
+.wp-band{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;align-items:center;margin:10px 0}
 .wp-band .tr{position:relative;height:16px}
 .wp-band .rg{position:absolute;top:3px;height:10px;border-radius:5px;background:var(--bg-accent);border:.5px solid var(--border-accent)}
 .wp-band .lk{position:absolute;top:1px;width:3px;height:14px;border-radius:2px;background:var(--fill-accent)}
 .wp-axis{position:relative;height:16px;margin-left:140px;font-size:11px;color:var(--text-muted)}
 .wp-axis span{position:absolute;transform:translateX(-50%)}
 .wp-blast text{font-size:12px;fill:var(--text-primary);font-family:var(--font-sans)}
-.wp-tx{font-size:15px;line-height:1.6;margin:0 0 10px}
+.wp-tx{font-size:15px;line-height:1.65;margin:0 0 14px;max-width:62ch}
 .wp-tx:last-child{margin-bottom:0}
 .wp code{font-family:var(--font-mono);font-size:.9em;background:var(--bg-neutral,var(--surface-1));padding:1px 5px;border-radius:4px}
 .wp b{font-weight:500}
-.wp-pts{display:flex;flex-direction:column;gap:6px;margin:0 0 10px}
+.wp-pts{display:flex;flex-direction:column;gap:9px;margin:0 0 14px}
 .wp-pts:last-child{margin-bottom:0}
 .wp-pt{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:start;line-height:1.5}
 .wp-pt>i.ti{margin-top:2px}
-.wp-kv{display:grid;grid-template-columns:22px auto minmax(0,1fr);gap:8px 10px;align-items:center}
+.wp-kv{display:grid;grid-template-columns:22px auto minmax(0,1fr);gap:12px 12px;align-items:center}
 .wp-kv .k{color:var(--text-secondary)}
+.wp-why{margin-top:16px;border-top:.5px solid var(--border);padding-top:12px}
+.wp-why summary{cursor:pointer;color:var(--text-secondary);font-size:13px;display:inline-flex;gap:6px;align-items:center;list-style:none}
+.wp-why summary::-webkit-details-marker{display:none}
+.wp-why[open] summary{margin-bottom:12px}
+.wp-why[open] summary .ti-chevron-down{transform:rotate(180deg)}
+.wp-why .wp-tx{font-size:14px;color:var(--text-secondary)}
+.wp-tl{display:grid;grid-template-columns:96px 28px minmax(0,1fr);gap:0 12px}
+.wp-tl>div{padding:10px 0;position:relative}
+.wp-tl .w{color:var(--text-secondary);font-size:13px;text-align:right;padding-top:14px}
+.wp-tl .d{display:flex;justify-content:center}
+.wp-tl .d span{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:.5px solid var(--border-strong);background:var(--surface-2);position:relative;z-index:1}
+.wp-tl .d:not(.last)::after{content:"";position:absolute;left:13px;top:38px;bottom:-10px;width:1.5px;background:var(--border)}
+.wp-tl .t{padding-top:13px;line-height:1.5}
+.wp-tl .t small{display:block;color:var(--text-secondary);font-size:13px;margin-top:3px}
+.wp-cl label{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:.5px solid var(--border);cursor:pointer;line-height:1.5}
+.wp-cl label:last-child{border-bottom:0}
+.wp-cl input{margin:3px 0 0;width:16px;height:16px;flex:none;accent-color:var(--fill-accent)}
+.wp-cl input:checked+span{color:var(--text-secondary);text-decoration:line-through}
+.wp-cl small{display:block;color:var(--text-secondary);font-size:13px;text-decoration:none}
+.wp-cnt{margin-left:auto;color:var(--text-secondary);font-size:13px;font-weight:400}
+.wp-pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.wp-op{display:flex;flex-direction:column;gap:8px;text-align:left;padding:16px;border:.5px solid var(--border-strong);border-radius:12px;background:var(--surface-2);cursor:pointer;font:inherit;color:inherit;height:auto}
+.wp-op:hover{border-color:var(--border-stronger)}
+.wp-op.rec{border:1.5px solid var(--border-accent)}
+.wp-op .nm{display:flex;gap:8px;align-items:center;font-weight:500;font-size:15px}
+.wp-op .tx{color:var(--text-secondary);line-height:1.5;font-size:14px}
+.wp-op .tag{align-self:flex-start;font-size:12px;padding:2px 10px;border-radius:var(--radius);background:var(--bg-accent);color:var(--text-accent)}
+.wp-op .ft{display:flex;gap:6px;flex-wrap:wrap;font-size:12px;color:var(--text-secondary);margin-top:auto;padding-top:4px}
+.wp-nx{display:flex;flex-direction:column;gap:14px}
+.wp-nx .go{display:flex;gap:14px;align-items:center;padding:14px 16px;border:1.5px solid var(--border-accent);border-radius:12px;cursor:pointer;background:var(--surface-2);text-align:left;font:inherit;color:inherit;height:auto;width:100%}
+.wp-nx .go:hover{background:var(--bg-accent)}
+.wp-nx .go>i.ti{font-size:22px;color:var(--text-accent)}
+.wp-nx .go b{display:block;font-size:15px}
+.wp-nx .go small{display:block;color:var(--text-secondary);font-size:13px;margin-top:2px;line-height:1.5}
+.wp-nx .or{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.wp-nx .or>span{color:var(--text-secondary);font-size:13px}
+.wp-nx .then{display:flex;gap:8px;align-items:flex-start;color:var(--text-secondary);font-size:13px;line-height:1.5}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 `;
   const E = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -86,7 +123,8 @@
   const M = t => E(t).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
   const TX = t => t ? String(t).split(/\n\n+/).map(x => `<p class="wp-tx">${M(x)}</p>`).join('') : '';
   const PTS = p => p && p.length ? `<div class="wp-pts">${p.map(x => { const [ic, tn, t] = Array.isArray(x) ? (x.length > 2 ? x : [x[0], null, x[1]]) : ['point', 'mute', x]; return `<div class="wp-pt">${I(ic, tn)}<div>${M(t)}</div></div>`; }).join('')}</div>` : '';
-  const card = (s, inner = '') => `<div class="wp-c">${s.title ? `<div class="wp-h">${I(s.icon)}${E(s.title)}</div>` : ''}${s.p === 'answer' ? '' : TX(s.text) + PTS(s.points)}${inner}${acts(s.act)}</div>`;
+  const WHY = w => { if (!w) return ''; const o = typeof w === 'string' ? { text: w } : w; return `<details class="wp-why"><summary>${I(o.icon || 'help-circle', 'sub', 'font-size:15px')}${E(o.label || 'Why')}${I('chevron-down', 'sub', 'font-size:14px')}</summary>${TX(o.text)}${PTS(o.points)}</details>`; };
+  const card = (s, inner = '', head = '') => `<div class="wp-c">${s.title ? `<div class="wp-h">${I(s.icon)}${E(s.title)}${head}</div>` : ''}${s.p === 'answer' ? '' : TX(s.text) + PTS(s.points)}${inner}${acts(s.act)}${WHY(s.why)}</div>`;
 
   // step kinds for route maps and plans
   const K = { build: ['hammer'], test: ['flask'], wait: ['hourglass', 'warn'], ask: ['message-question', 'info'], paid: ['coin', 'pro'], lock: ['lock', 'bad'], ship: ['rocket', 'ok'], read: ['book'], risk: ['alert-triangle', 'warn'] };
@@ -97,9 +135,28 @@
   };
 
   const P = {
-    answer: s => `<div class="wp-ans">${I(s.icon || 'point', s.tone)}<div>${M(s.text)}${s.more ? `<div style="font-size:15px;color:var(--text-secondary);margin-top:6px">${TX(s.more)}</div>` : ''}${PTS(s.points)}</div></div>${acts(s.act)}`,
+    answer: s => `<div class="wp-ans">${I(s.icon || 'point', s.tone)}<div>${M(s.text)}${s.more ? `<div style="font-size:15px;color:var(--text-secondary);margin-top:6px">${TX(s.more)}</div>` : ''}${PTS(s.points)}${WHY(s.why)}</div></div>${acts(s.act)}`,
 
     note: s => card(s),
+
+    timeline: s => {
+      const SI = { done: ['circle-check', 'ok'], now: ['player-play', 'info'], next: ['circle-dashed', 'mute'], risk: ['alert-triangle', 'warn'], miss: ['circle-x', 'bad'] };
+      const it = s.items || [];
+      return card(s, `<div class="wp-tl">${it.map(([w, t, st = 'next', sub], i) => { const [ic, tn] = SI[st] || [st, 'sub']; return `<div class="w">${E(w)}</div><div class="d${i === it.length - 1 ? ' last' : ''}"><span>${I(ic, tn, 'font-size:16px')}</span></div><div class="t" style="${st === 'now' ? 'font-weight:500' : st === 'done' ? col('sub') : ''}">${M(t)}${sub ? `<small>${M(sub)}</small>` : ''}</div>`; }).join('')}</div>`);
+    },
+
+    checklist: (s, id) => {
+      const it = s.items || [], on = it.filter(x => x[1]).length;
+      const [bl, bp, bi] = s.send || ['Send', 'Done'];
+      return card({ ...s, act: null }, `<div class="wp-cl" id="${id}">${it.map(([t, c, sub]) => `<label><input type="checkbox"${c ? ' checked' : ''} data-t="${E(t)}"><span>${M(t)}${sub ? `<small>${M(sub)}</small>` : ''}</span></label>`).join('')}</div><div class="wp-act"><button data-cl="${id}" data-pre="${E(bp)}">${I(bi || 'send')} ${E(bl)} ↗</button>${(s.act || []).map(x => btn(...x)).join('')}</div>`, `<span class="wp-cnt" data-cnt="${id}">${on} of ${it.length}</span>`);
+    },
+
+    picker: s => card(s, `<div class="wp-pick">${(s.options || []).map(o => `<button class="wp-op${o.rec ? ' rec' : ''}" data-p="${E(o.prompt || 'Pick: ' + o.name)}">${o.tag || o.rec ? `<span class="tag">${E(o.tag || 'Recommended')}</span>` : ''}<span class="nm">${I(o.icon)}${E(o.name)}</span>${o.text ? `<span class="tx">${M(o.text)}</span>` : ''}${o.facts ? `<span class="ft">${o.facts.map(f => Array.isArray(f) ? `<span style="display:inline-flex;gap:4px;align-items:center">${I(f[0], f[2] || 'sub', 'font-size:14px')}${E(f[1])}</span>` : E(f)).join('<span>·</span>')}</span>` : ''}</button>`).join('')}</div>`),
+
+    next: s => {
+      const [l, pr, ic, sub] = s.do || [];
+      return card({ ...s, title: s.title || 'Next step', icon: s.icon || 'arrow-right', act: null }, `<div class="wp-nx"><button class="go" data-p="${E(pr || l)}">${I(ic || 'player-play')}<span><b>${E(l)}</b>${sub ? `<small>${M(sub)}</small>` : ''}</span>${I('arrow-right', 'info', 'margin-left:auto')}</button>${s.or && s.or.length ? `<div class="or"><span>${E(s.orLabel || 'Or')}</span>${s.or.map(x => btn(...x)).join('')}</div>` : ''}${s.then ? `<div class="then">${I('hourglass', 'sub', 'font-size:15px')}<span>${M(s.then)}</span></div>` : ''}</div>`);
+    },
 
     facts: s => card(s, `<div class="wp-kv">${(s.rows || []).map(([ic, k, v, t]) => `${I(ic, 'sub')}<div class="k">${E(k)}</div><div style="${col(t)}">${M(v)}</div>`).join('')}</div>`),
 
@@ -182,6 +239,13 @@
     root.addEventListener('click', e => {
       const b = e.target.closest('[data-p]');
       if (b && !b.hasAttribute('data-hold')) send(b.dataset.p);
+      const c = e.target.closest('[data-cl]');
+      if (c) { const t = [...root.querySelectorAll('#' + c.dataset.cl + ' input:checked')].map(x => x.dataset.t); send(`${c.dataset.pre}: ${t.length ? t.join('; ') : 'none'}`); }
+    });
+    root.addEventListener('change', e => {
+      const l = e.target.closest('.wp-cl'); if (!l) return;
+      const n = root.querySelector(`[data-cnt="${l.id}"]`), all = l.querySelectorAll('input');
+      if (n) n.textContent = `${[...all].filter(x => x.checked).length} of ${all.length}`;
     });
     root.addEventListener('keydown', e => {
       const b = e.target.closest('[role=button][data-p]');

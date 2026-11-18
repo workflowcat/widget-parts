@@ -1,9 +1,9 @@
 # widget-parts
 
-Twelve small parts for chat widgets, drawn from JSON. The look comes from the host page's CSS variables (`--surface-2`, `--text-primary`, `--border`, ...) and Tabler outline icons, so a part matches the chat it sits in, light or dark.
+Sixteen small parts for chat widgets, drawn from JSON. The look comes from the host page's CSS variables (`--surface-2`, `--text-primary`, `--border`, ...) and Tabler outline icons, so a part matches the chat it sits in, light or dark.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/workflowcat/widget-parts@1.1.0/wp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/workflowcat/widget-parts@1.2.0/wp.min.js"></script>
 <script>WP([{"p":"answer","icon":"circle-check","tone":"ok","text":"Fixed and live."}])</script>
 ```
 
@@ -13,6 +13,10 @@ Twelve small parts for chat widgets, drawn from JSON. The look comes from the ho
 |---|---|---|
 | `answer` | the one-line answer | `icon, tone, text, more, points` |
 | `note` | a few sentences and points | `title, icon, text, points` |
+| `next` | the one step to take now | `do: [label, prompt, icon, sub], or, then` |
+| `picker` | choose 1 of 2-4 | `options: [{name, icon, text, facts, rec, tag, prompt}]` |
+| `checklist` | what is left | `items: [[text, checked, sub]], send: [label, prefix, icon]` |
+| `timeline` | what happened, what comes | `items: [[when, text, done/now/next/risk/miss, sub]]` |
 | `facts` | label and value rows | `rows: [[icon, label, value, tone]]` |
 | `diff` | before and after | `rows`: `"same"`, `[old, new]`, `[old, null]`, `[null, new]` |
 | `gate` | yes or no against a checklist | `checks: [[icon, text, 1/0/-1]], verdict` |
@@ -24,7 +28,7 @@ Twelve small parts for chat widgets, drawn from JSON. The look comes from the ho
 | `changed` | before and now, for users | `items: [{area, areaIcon, icon, before, now}]` |
 | `band` | estimates as ranges | `items: [[label, lo, hi, likely]], unit` |
 
-Every card part also takes `title`, `icon`, `text` (paragraphs split by a blank line; `**bold**` and `` `code` ``), `points` (`[[icon, tone, text]]`) and `act` (`[[label, prompt, icon, hold]]`). Buttons call `sendPrompt(prompt)` when the host has it. `hold: 1` asks for a 0.9 s press. Tones: `ok`, `warn`, `bad`, `info`, `pro`, `mute`, `sub`.
+Every card part also takes `title`, `icon`, `text` (paragraphs split by a blank line; `**bold**` and `` `code` ``), `points` (`[[icon, tone, text]]`), `why` (a fold: a string or `{label, text, points}`) and `act` (`[[label, prompt, icon, hold]]`). Buttons call `sendPrompt(prompt)` when the host has it. `hold: 1` asks for a 0.9 s press. Tones: `ok`, `warn`, `bad`, `info`, `pro`, `mute`, `sub`.
 
 Samples for every part: `examples/gallery.json`. Preview: serve the folder and open `examples/preview.html` (`#dark` for dark).
 
